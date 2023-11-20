@@ -5,6 +5,7 @@ import React from 'react'
 import { UserMenu } from '@/components/Sidebar';
 import { useRouter } from 'next/navigation';
 import closeSession from './actions/closeSession';
+import HeaderRoutes from '../../components/HeaderRoutes'
 
 const { Content, Sider, Footer, Header } = Layout;
 
@@ -102,7 +103,7 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
             }}
         >
             <div className='header'>
-                {/* <HeaderRoutes /> */}
+                <HeaderRoutes />
             </div>
         </Header>
         <Content

@@ -1,5 +1,5 @@
 "use client"
-import { HomeOutlined, UserOutlined } from '@ant-design/icons'
+import { FlagOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons'
 import { SectionsObject } from '../types/app'
 
 const UserMenu: SectionsObject = {
@@ -16,7 +16,15 @@ const UserMenu: SectionsObject = {
         children: [
             {title: "Inicio", subtitle: "Usuarios", route: "/admin/users"}
         ]
-
+    },
+    Tournaments: {
+        title: "Torneos",
+        type: "subitem",
+        icon: <FlagOutlined />,
+        children: [
+            {title: "Inicio", subtitle: "Torneos", route: "/admin/tournaments"},
+            {title: "Participantes", subtitle: "Participantes", route: "/admin/competitors"},
+        ]
     }
 }
 
