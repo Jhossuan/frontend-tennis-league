@@ -11,11 +11,9 @@ const UserMenu: SectionsObject = {
     },
     Usuarios: {
         title: "Usuarios",
-        type: "subitem",
+        route: "/admin/users",
+        type: "item",
         icon: <UserOutlined />,
-        children: [
-            {title: "Inicio", subtitle: "Usuarios", route: "/admin/users"}
-        ]
     },
     Tournaments: {
         title: "Torneos",

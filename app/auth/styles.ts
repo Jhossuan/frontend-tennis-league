@@ -9,6 +9,7 @@ export interface TextI {
     marginTop?: string;
     marginBottom?: string;
     fontSize?: string;
+    fontWeight?: string;
     lineHeight?: string;
 
     // Responsive Types
@@ -61,7 +62,7 @@ export const MediumText = styled.p<TextI>`
     color: ${(props) => props.textColor || "#333333"};
     font-size: ${(props) => props.fontSize || "1.6em"};
     font-style: normal;
-    font-weight: 600;
+    font-weight: ${(props) => props.fontWeight || 600};
     text-align: ${(props) => props.$textalign || "center"};
     margin-left: ${(props) => props.marginLeft};
     margin-right: ${(props) => props.marginRight};

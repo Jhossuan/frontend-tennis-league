@@ -12,6 +12,7 @@ export interface LoginI {
 }
 
 export interface DecodedData {
+    uid: string
     name: string
     email: string
     id: string

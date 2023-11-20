@@ -6,6 +6,9 @@ import { UserMenu } from '@/components/Sidebar';
 import { useRouter } from 'next/navigation';
 import closeSession from './actions/closeSession';
 import HeaderRoutes from '../../components/HeaderRoutes'
+import TennisIcon from '../../public/tennis_icon.png'
+import Image from 'next/image';
+import styles from './styles.module.css'
 
 const { Content, Sider, Footer, Header } = Layout;
 
@@ -31,8 +34,9 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
         mode="inline"
         style={{ height: "100%", padding: "20px 0", zIndex: "999" }}
     >
-        <div className='logo'>
-            Logo Here
+        <div className={styles.container_logo}>
+            <Image className={styles.logo} src={TennisIcon} alt='Tennis Icon' />
+            <p className={styles.text_logo}>Whynot?</p>
         </div>
         {Object.values(UserMenu).map((section) => {
             return (
@@ -96,7 +100,7 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
     <Layout style={{ background: "#e5e5e5" }}>
         <Header
             style={{
-                background: "#4CAF50",
+                background: "#01ade3",
                 color: "#fff",
                 height: "15em",
                 boxShadow: "0px 5px 10px 1px #00000004"
