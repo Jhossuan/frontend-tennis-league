@@ -141,7 +141,6 @@ const Tournaments = () => {
     }, [])
 
     useEffect(() => {
-        console.log(openModal.metadata)
         if(openModal.type === 'edit'){
             const dateFormated = moment(openModal.metadata?.eventDate)
             form.setFieldsValue({
