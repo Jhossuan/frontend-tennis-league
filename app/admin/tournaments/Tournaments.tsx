@@ -15,14 +15,14 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
 import TournamentDetail from './TournamentDetail'
 import { metadata } from '@/app/layout'
 
-const InitOpenModal: OpenModalT = {
+export const InitOpenModal: OpenModalT = {
     open: false,
     title: '',
     type: 'create',
     metadata: undefined
 }
 
-type OpenModalT = {
+export type OpenModalT = {
     open: boolean,
     title: string,
     type: 'edit' | 'create' | 'view',

@@ -17,6 +17,10 @@ const CustomBadge = (status: string) => {
         return <Badge color='#e7d904' count="PENDIENTE" />
     case 'CANCELED':
         return <Badge color='#f00000' count="CANCELADO" />
+    case 'REGULAR':
+        return <Badge color='#00b4d8' count="Participante" />
+    case 'ADMIN':
+        return <Badge color='#e7d904' count="Administrador" />
 
     default:
         return <Badge color='#569b4a' count={status} />

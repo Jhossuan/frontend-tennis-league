@@ -26,7 +26,6 @@ export async function middleware(request: NextRequest) {
         "/auth/login",
         "/auth/register",
         "/auth/repassword",
-        "/",
     ]
 
     if(!token && protectedRoutes.includes(pathname)){

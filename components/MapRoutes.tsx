@@ -7,7 +7,7 @@ export const routes: Record<string, object> = {
     },
     usuarios: {
         title: "Usuarios",
-        description: "Sección de los usuarios",
+        description: "Administra los usuarios regulares y admins",
         route: "/admin/users"
     },
     tournaments: {

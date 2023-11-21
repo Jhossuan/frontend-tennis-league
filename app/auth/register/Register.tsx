@@ -66,7 +66,7 @@ export default function Register() {
           <Input prefix={<MailOutlined />} placeholder="Correo Electrónico" />
         </Form.Item>
 
-        <Form.Item name="phone" rules={[{ required: true }, {min: 10, message:"Mínimo 10 dígitos"}, {max: 10, message:"Máximo 10 dígitos"}]} style={{ margin:'2em 0' }}>
+        <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 10, message:"Máximo 10 dígitos"}]} style={{ margin:'2em 0' }}>
           <Input type='number' prefix={"+57"} placeholder='Celular / Télefono' />
         </Form.Item>
 
