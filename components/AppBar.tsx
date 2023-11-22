@@ -195,7 +195,7 @@ function ResponsiveAppBar({
               </>
             ) : (
               <>
-                <Link href="/auth/register" style={{ textDecoration: "none" }}>
+                <Link href="/" style={{ textDecoration: "none" }}>
                   <ButtonAnt size="large" type="primary" danger onClick={logout}>Cerrar Sesión</ButtonAnt>
                 </Link>
               </>
