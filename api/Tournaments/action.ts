@@ -4,6 +4,7 @@ import { ResponseType } from "@/types/app"
 import TournamentI from "@/types/tournament"
 import axios from "axios"
 import { GetToken } from "../AuthToken"
+import GetHeaders from "@/utils/Headers"
 
 
 export async function GetTournaments (): Promise<ResponseType<Object | string>> {
@@ -24,13 +25,7 @@ export async function GetTournaments (): Promise<ResponseType<Object | string>> 
 }
 
 export async function CreateNewTournament (data: TournamentI): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.post(
             `${process.env.API_URL}v1/tournaments/create`,
@@ -50,13 +45,7 @@ export async function CreateNewTournament (data: TournamentI): Promise<ResponseT
 }
 
 export async function UpdateTournament (data: any): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.patch(
             `${process.env.API_URL}v1/tournaments/update`,
@@ -76,13 +65,7 @@ export async function UpdateTournament (data: any): Promise<ResponseType<Object 
 }
 
 export async function DeleteTournament (data: any): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers = {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
 
     try {
         const res = await axios.post(

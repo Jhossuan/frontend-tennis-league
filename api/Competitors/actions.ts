@@ -3,15 +3,10 @@
 import { ResponseType } from "@/types/app"
 import axios from "axios"
 import { GetToken } from "../AuthToken"
+import GetHeaders from "@/utils/Headers"
 
 export async function GetCompetitors (): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.get(
             `${process.env.API_URL}v1/competitors/get`,
@@ -30,13 +25,7 @@ export async function GetCompetitors (): Promise<ResponseType<Object | string>> 
 }
 
 export async function UnsuscribeCompetitors (data: { uid: string, tid: string }): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.post(
             `${process.env.API_URL}v1/competitors/unsuscribe`,
@@ -56,13 +45,7 @@ export async function UnsuscribeCompetitors (data: { uid: string, tid: string })
 }
 
 export async function SuscribeCompetitor (data: { uid: string, tid: string }): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.post(
             `${process.env.API_URL}v1/competitors/register`,
@@ -82,13 +65,7 @@ export async function SuscribeCompetitor (data: { uid: string, tid: string }): P
 }
 
 export async function GetUserSubscriptions (uid: string): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.get(
             `${process.env.API_URL}v1/tournaments/userTournaments?uid=${uid}`,

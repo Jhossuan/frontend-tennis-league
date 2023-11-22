@@ -1,15 +1,9 @@
 import { ResponseType } from "@/types/app"
 import axios from "axios"
-import { GetToken } from "../AuthToken"
+import GetHeaders from "@/utils/Headers"
 
 export async function GetAllData(): Promise<ResponseType<Object | string>> {
-    const token = await GetToken()  
-    const headers =             {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token?.value}`
-        }
-    }
+    const headers = await GetHeaders()
     try {
         const res = await axios.get(
             `${process.env.API_URL}v1/user/all-data`,
