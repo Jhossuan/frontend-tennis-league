@@ -39,28 +39,28 @@ export async function middleware(request: NextRequest) {
         }
 
         if(user.type === 'regular' && adminRoutes.includes(pathname)){
-            const absoluteURL = new URL('/', request.nextUrl.origin);
-            return NextResponse.redirect(absoluteURL.toString())
+            url.pathname = '/'
+            return NextResponse.redirect(url)
         }
 
         if(user.type === 'regular' && publicRoutes.includes(pathname)){
-            const absoluteURL = new URL('/', request.nextUrl.origin);
-            return NextResponse.redirect(absoluteURL.toString())
+            url.pathname = '/'
+            return NextResponse.redirect(url)
         }
 
         if(user.type === 'admin' && pathname == '/'){
-            const absoluteURL = new URL('/admin', request.nextUrl.origin);
-            return NextResponse.redirect(absoluteURL.toString())
+            url.pathname = "/admin";
+            return NextResponse.redirect(url)
         }
 
         if(user.type === 'admin' && publicRoutes.includes(pathname)){
-            const absoluteURL = new URL('/admin', request.nextUrl.origin);
-            return NextResponse.redirect(absoluteURL.toString())
+            url.pathname = "/admin";
+            return NextResponse.redirect(url)
         }
 
         if(user.type === 'admin' && userRoutes.includes(pathname)){
-            const absoluteURL = new URL('/admin', request.nextUrl.origin);
-            return NextResponse.redirect(absoluteURL.toString())
+            url.pathname = "/admin";
+            return NextResponse.redirect(url)
         }
 
     }

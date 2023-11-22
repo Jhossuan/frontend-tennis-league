@@ -1,9 +1,11 @@
+"use client"
 import { GetUserData } from "@/api/AuthToken"
 import { redirect, usePathname } from "next/navigation"
 
 export const protectRoutes = async() =>{
 
     const pathname = usePathname()
+    console.log("pathname", pathname)
 
     const adminRoutes = [
         "/admin",
@@ -33,7 +35,8 @@ export const protectRoutes = async() =>{
         return redirect('/')
     }
 
-    if(user){        
+    if(user){
+        console.log(user)
         if(user.type === 'regular' && adminRoutes.includes(pathname)){
             return redirect('/')
         }
@@ -47,7 +50,7 @@ export const protectRoutes = async() =>{
         }
 
         if(user.type === 'admin' && publicRoutes.includes(pathname)){
-            return redirect('admin')
+            return redirect('/admin')
         }
 
         if(user.type === 'admin' && userRoutes.includes(pathname)){

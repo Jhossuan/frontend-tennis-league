@@ -18,9 +18,8 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
 
     const logout = () => {
         closeSession()
-        setTimeout(() => {
-            window.location.reload()
-        }, 1000)
+        router.push('/')
+        router.refresh()
     }
 
   return (
@@ -52,7 +51,7 @@ export default function PlatformLayout({ children }: { children: React.ReactNode
                     ) : (
                             section.type === "subitem" &&
                             section.children && (
-                                <Menu.SubMenu title={section.title} icon={section.icon}>
+                                <Menu.SubMenu key={section.title} title={section.title} icon={section.icon}>
                                     {section.children.map((item: any) => {
                                         return (
                                             <Menu.Item

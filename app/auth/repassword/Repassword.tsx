@@ -77,6 +77,7 @@ export default function Repassword() {
     setLoading(false)
     setSteps(0)
     router.push('/auth/login')
+    router.refresh()
     return notification.success({
       message: res.response.msg
     })
