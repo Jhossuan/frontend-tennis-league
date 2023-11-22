@@ -45,7 +45,7 @@ export default function Register() {
       <p className={styles.smallText} style={{ textAlign: 'left' }}>
         Bienvenido a <span style={{ color: '#0366d6' }}>Tennis League by Whynot?</span>
       </p>
-      <p className={`${styles.bigText} ${styles.bigTextLeft}`}>Iniciar Sesión</p>
+      <p className={`${styles.bigText} ${styles.bigTextLeft}`}>Registrarse</p>
       <Form
         form={form}
         onFinish={onFinish}
