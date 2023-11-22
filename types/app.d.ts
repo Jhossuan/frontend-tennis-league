@@ -21,3 +21,11 @@ export type ResponseType<T> = {
   status: number;
   response: T | any;
 };
+
+
+export interface DashboardProps {
+  "qtyCompetitors": number,
+  "qtyUsers": number,
+  "qtyTournaments": number,
+  "statusTournaments": {_id: string, count: number}[]
+}
