@@ -15,7 +15,7 @@ import TennisIcon from "@mui/icons-material/SportsTennisOutlined";
 import Link from "next/link";
 import { DecodedData } from "@/types/auth";
 import closeSession from "@/app/admin/actions/closeSession";
-import { useEffect } from 'react'
+import { useRouter } from "next/navigation";
 
 const pagesAuth = ["INICIO", "TORNEOS", "MIS SUSCRIPCIONES"];
 const pages = ["INICIO", "TORNEOS"];
@@ -28,6 +28,8 @@ function ResponsiveAppBar({
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+
+  const router = useRouter()
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -52,9 +54,7 @@ function ResponsiveAppBar({
 
     const logout = () => {
         closeSession()
-        setTimeout(() => {
-            window.location.reload()
-        }, 1000)
+        router.push('/')
     }
 
   return (
