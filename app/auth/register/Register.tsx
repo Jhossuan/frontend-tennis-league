@@ -1,10 +1,10 @@
 "use client";
 
-import { Button, Divider, Form, Input, notification } from "antd";
+import { Button, Divider, Form, Input, Tooltip, notification } from "antd";
 import React, { useState } from "react";
 import Link from "next/link";
 import { validateMessages } from "@/utils/ValidationMessages";
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, PhoneOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { RegisterUser } from "@/api/Auth/actions";
 import { useRouter } from "next/navigation";
 import styles from '../auth.module.css'
@@ -20,7 +20,7 @@ export default function Register() {
       name: e.name,
       email: e.email,
       password: e.password,
-      phone: `+57${e.phone}`,
+      phone: `+${e.phone}`,
       userType: "regular"
     }
     setLoading(true)
@@ -68,9 +68,11 @@ export default function Register() {
           <Input prefix={<MailOutlined />} placeholder="Correo Electrónico" />
         </Form.Item>
 
-        <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 10, message:"Máximo 10 dígitos"}]} style={{ margin:'2em 0' }}>
-          <Input type='number' prefix={"+57"} placeholder='Celular / Télefono' />
-        </Form.Item>
+        <Tooltip title="Por favor, ingresa tu número de teléfono con el código de país.">
+          <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 10, message:"Máximo 10 dígitos"}]} style={{ margin:'2em 0' }}>
+            <Input type='number' prefix={<PhoneOutlined />} placeholder='17875XXXXXX' />
+          </Form.Item>
+        </Tooltip>
 
         <Form.Item
           name="password"

@@ -1,13 +1,12 @@
-import { DecodedToken } from "@/api/Auth/actions";
 import { NextRequest, NextResponse } from "next/server";
+import { GetUserData } from "./api/AuthToken";
 
 export async function middleware(request: NextRequest) {
     
     const { pathname } = request.nextUrl;
     const url = request.nextUrl.clone();
 
-    const cookie = request.cookies.get('token');
-    const token = cookie?.value;
+    const user = await GetUserData()
 
     const adminRoutes = [
         "/admin",
@@ -28,16 +27,12 @@ export async function middleware(request: NextRequest) {
         "/auth/repassword",
     ]
 
-    if(!token && protectedRoutes.includes(pathname)){
+    if(!user && protectedRoutes.includes(pathname)){
         const absoluteURL = new URL('/', request.nextUrl.origin);
         return NextResponse.redirect(absoluteURL.toString())
     }
 
-    if( token ) {
-        url.pathname = "/not-found"
-        
-        const { response: user } = await DecodedToken(token)
-
+    if( user ) {
         if (user.exp < Date.now() / 1000) {
             url.pathname = "/auth/login";
             return NextResponse.redirect(url);

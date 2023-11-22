@@ -15,8 +15,8 @@ export async function GetAllData(): Promise<ResponseType<Object | string>> {
         }
     } catch (error: any) {
         return {
-            status: error.response.status ?? 500,
-            response: error.response.data ?? 'Error al obtener usuarios'
+            status: error?.response?.status ?? 500,
+            response: error?.response?.data ?? 'Error al obtener usuarios'
         }
     }
 }

@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers"
 import { DecodedToken } from "./Auth/actions";
+import { DecodedData } from "@/types/auth";
 
 export async function GetToken () {
     const cookieStore = cookies();
