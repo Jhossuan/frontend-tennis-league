@@ -70,7 +70,7 @@ export default function Register() {
         </Form.Item>
 
         <Tooltip title="Por favor, ingresa tu número de teléfono con el código de país.">
-          <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 10, message:"Máximo 10 dígitos"}]} style={{ margin:'2em 0' }}>
+          <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 14, message:"Máximo 14 dígitos"}]} style={{ margin:'2em 0' }}>
             <Input type='number' prefix={<PhoneOutlined />} placeholder='17875XXXXXX' />
           </Form.Item>
         </Tooltip>
