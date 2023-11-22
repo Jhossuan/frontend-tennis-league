@@ -43,7 +43,7 @@ const Dashboard = ({ data }: { data: DashboardProps }) => {
             </div>
         </Col>
 
-        <Col span={18}>
+        <Col xs={24} sm={24} md={18} lg={18}>
             <div className={styles.cardContainer}>
                 <BarChart data={data.statusTournaments ?? []} isLoading={false} />
             </div>
