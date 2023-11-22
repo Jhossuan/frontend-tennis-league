@@ -1,44 +1,48 @@
 "use client"
 
-import { BigText, MediumText, SmallText } from '@/app/auth/styles'
 import TournamentI from '@/types/tournament'
 import { Col, Row } from 'antd'
 import React from 'react'
+import styles from '../../auth/auth.module.css'
 import moment from 'moment'
 
 const TournamentDetail = ({data}:{data: TournamentI | undefined}) => {
 
   return (
-    <Row gutter={[10, 10]} style={{ padding:'30px' }}>
-        <Col span={24}>
-            <MediumText fontSize='30px' fontWeight='700'>{data?.title ?? ''}</ MediumText>
-        </Col>
-        <Col span={24}>
-            <SmallText lineHeight='25px'>{data?.description ?? ''}</SmallText>
-        </Col>
-        <Col span={24} style={{ display: 'flex', justifyContent:'center', alignItems:'center' }}>
-            {
-                data?.imageUrl
-                    ? <img src={data?.imageUrl ?? ''} alt={data?.title ?? 'Image'}  style={{ width:'70%', height: 'auto' }} />
-                    : (
-                        <div style={{ width: '70%', height:'40em', background: '#c3c3c3', textAlign:'center', display: 'flex', justifyContent: 'center', alignItems:'center'}}>
-                            Banner publicitario aqui
-                        </div>
-                    )
-            }
-        </Col>
-        <Col span={24}>
-            <MediumText>📍 {data?.location ?? ''}</ MediumText>
-        </Col>
-        <Col span={24}>
-            <SmallText>🏆 {data?.reward}</ SmallText>
-        </Col>
-        <Col span={12}>
-            <SmallText>💲 {Number(data?.price) > 0 ? `${data?.price} USD` : 'Torneo Gratuito'}</ SmallText>
-        </Col>
-        <Col span={12}>
-            <SmallText>📅 {moment(data?.eventDate).format('LLL')}</ SmallText>
-        </Col>
+    <Row gutter={[10, 10]} style={{ padding: '30px' }}>
+      <Col span={24}>
+        <div className={styles.mediumText}>🏆 {data?.title ?? ''}</div>
+      </Col>
+      <Col span={24}>
+        <div className={styles.smallText} style={{ lineHeight: '25px' }}>
+          {data?.description ?? ''}
+        </div>
+      </Col>
+      <Col span={24} className={styles.centeredImage}>
+        {data?.imageUrl ? (
+          <img src={data?.imageUrl ?? ''} alt={data?.title ?? 'Image'} style={{ width: '70%', height: 'auto' }} />
+        ) : (
+          <div className={styles.bannerPlaceholder}>
+            Banner publicitario aquí
+          </div>
+        )}
+      </Col>
+      <Col span={24}>
+        <div className={styles.mediumText}>📍 {data?.location ?? ''}</div>
+      </Col>
+      <Col span={24}>
+        <div className={styles.smallText}>🏆 {data?.reward}</div>
+      </Col>
+      <Col span={12}>
+        <div className={styles.smallText}>
+          💲 {Number(data?.price) > 0 ? `${data?.price} USD` : 'Torneo Gratuito'}
+        </div>
+      </Col>
+      <Col span={12}>
+        <div className={styles.smallText}>
+          📅 {moment(data?.eventDate).format('LLL')}
+        </div>
+      </Col>
     </Row>
   )
 }

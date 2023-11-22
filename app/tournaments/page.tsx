@@ -1,7 +1,10 @@
 import React from 'react'
+import Tournaments from './Tournaments'
 
-export default function page() {
+export default async function page() {
   return (
-    <div>Tournaments Index</div>
+    <>
+        <Tournaments />
+    </>
   )
 }

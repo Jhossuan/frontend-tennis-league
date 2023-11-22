@@ -44,12 +44,17 @@ export async function middleware(request: NextRequest) {
         }
 
         if(user.type === 'regular' && adminRoutes.includes(pathname)){
-            const absoluteURL = new URL('/home', request.nextUrl.origin);
+            const absoluteURL = new URL('/', request.nextUrl.origin);
             return NextResponse.redirect(absoluteURL.toString())
         }
 
         if(user.type === 'regular' && publicRoutes.includes(pathname)){
-            const absoluteURL = new URL('/home', request.nextUrl.origin);
+            const absoluteURL = new URL('/', request.nextUrl.origin);
+            return NextResponse.redirect(absoluteURL.toString())
+        }
+
+        if(user.type === 'admin' && pathname == '/'){
+            const absoluteURL = new URL('/admin', request.nextUrl.origin);
             return NextResponse.redirect(absoluteURL.toString())
         }
 

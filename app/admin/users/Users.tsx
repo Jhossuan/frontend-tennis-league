@@ -1,6 +1,5 @@
 "use client"
 
-import { CardContainer } from '@/components/StyledComponents'
 import { Button, Col, Form, Modal, Popconfirm, Row, Table, notification } from 'antd'
 import React, { useEffect, useState } from 'react'
 import CreateUser from './CreateUser'
@@ -11,6 +10,7 @@ import { UserSchemaI } from '@/types/users'
 import moment from 'moment'
 import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
 import CustomBadge from '@/components/Badges'
+import styles from '../../../components/components.module.css'
 
 export const InitOpenModal: OpenModalT = {
     open: false,
@@ -217,7 +217,7 @@ const Users = () => {
 
   return (
     <>
-      <CardContainer>
+      <div className={styles.cardContainer}>
         <Row>
           <Col span={24}>
             <Button type='primary' onClick={() => onCreateUser()}>Crear Usuario</Button>
@@ -226,7 +226,7 @@ const Users = () => {
             <Table columns={columns} dataSource={users ?? []} loading={loading} />
           </Col>
         </Row>
-      </CardContainer>
+      </div>
       <Modal title={openModal?.title} open={openModal?.open} footer={false} onCancel={() => setOpenModal({ ...openModal, open: false })} style={{ minWidth: '40vw' }}>
         { ObtainComponentUser() }
       </Modal>

@@ -19,6 +19,6 @@ export async function GetUserData () {
         const { response } = await DecodedToken(token.value)
         return response
     }
-    else "Usuario no encontrado"
+    else return undefined
 
 }

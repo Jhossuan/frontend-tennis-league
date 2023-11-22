@@ -1,11 +1,10 @@
 "use client"
 
 import { GetCompetitors, UnsuscribeCompetitors } from '@/api/Competitors/actions'
-import { CardContainer } from '@/components/StyledComponents'
 import { Button, Col, Popconfirm, Row, Table, notification } from 'antd'
 import React, { useEffect, useState } from 'react'
+import styles from '../../../components/components.module.css'
 import moment from 'moment'
-import { DeleteOutlined } from '@ant-design/icons'
 
 interface TournamentUserI {
     title: string;
@@ -107,13 +106,13 @@ const Competitors = () => {
     }, [])
 
   return (
-    <CardContainer>
+    <div className={styles.cardContainer}>
         <Row>
             <Col span={24}>
                 <Table columns={columns} loading={loading} dataSource={competitors ?? []}/>
             </Col>
         </Row>
-    </CardContainer>
+    </div>
   )
 }
 

@@ -1,7 +1,6 @@
 "use client"
 
 import CustomBadge from '@/components/Badges'
-import { CardContainer } from '@/components/StyledComponents'
 import { Button, Col, Form, Modal, Popconfirm, Row, Table, notification } from 'antd'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
@@ -13,7 +12,7 @@ import { GetUserData } from '@/api/AuthToken'
 import { DecodedData } from '@/types/auth'
 import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
 import TournamentDetail from './TournamentDetail'
-import { metadata } from '@/app/layout'
+import styles from '../../../components/components.module.css'
 
 export const InitOpenModal: OpenModalT = {
     open: false,
@@ -248,7 +247,7 @@ const Tournaments = () => {
 
   return (
     <>
-        <CardContainer>
+        <div className={styles.cardContainer}>
             <Row gutter={[10, 10]}>
                 <Col span={24}>
                     <Button type='primary' onClick={() => onCreateTournament()}>CREAR TORNEO</Button>
@@ -257,7 +256,7 @@ const Tournaments = () => {
                     <Table loading={isLoading} columns={columns} dataSource={tournaments ?? []} />
                 </Col>
             </Row>
-        </CardContainer>
+        </div>
         <Modal title={openModal?.title} open={openModal?.open} footer={false} onCancel={() => setOpenModal({ ...openModal, open: false })} style={{ minWidth: '50vw' }}>
             { ObtainTournamentComponent() }
         </Modal>

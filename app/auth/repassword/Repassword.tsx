@@ -4,11 +4,11 @@ import React from 'react'
 import { Form, Input, Button, Divider, Steps, notification } from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import { BigText, SmallText } from '../styles';
 import { validateMessages } from '@/utils/ValidationMessages';
 import Link from 'next/link';
 import { ResetPassword, SendCodeValidation, ValidateAccount } from '@/api/Auth/actions';
 import { useRouter } from 'next/navigation';
+import styles from '../auth.module.css'
 
 export default function Repassword() {
 
@@ -87,8 +87,10 @@ export default function Repassword() {
       case 0:
         return (
           <>
-            <SmallText $textalign='left'>Enviaremos un código <span style={{ color:"#0366d6" }}>a tu Whatsapp</span></SmallText>
-            <BigText $textalign='left'>Nueva contraseña</BigText>
+            <p className={styles.smallText} style={{ textAlign: 'left' }}>
+              Enviaremos un código <span style={{ color:"#0366d6" }}>a tu Whatsapp</span>
+            </p>
+            <p className={styles.bigText}>Nueva contraseña</p>
 
             <Form form={form} onFinish={sendVerificationCode} style={{ margin: '4em 0 0 auto' }} validateMessages={validateMessages}>
                 <Form.Item name="email" rules={[{ type: 'email', required: true }]} style={{ margin:'2em 0' }}>
@@ -104,8 +106,10 @@ export default function Repassword() {
       case 1:
         return (
           <>
-            <SmallText $textalign='left'>Ingresa el código enviado <span style={{ color:"#0366d6" }}>a tu Whatsapp</span></SmallText>
-            <BigText $textalign='left'>Nueva contraseña</BigText>
+            <p className={styles.smallText} style={{ textAlign: 'left' }}>
+              Ingresa el código enviado <span style={{ color:"#0366d6" }}>a tu Whatsapp</span>
+            </p>
+            <p className={styles.bigText}>Nueva contraseña</p>
 
             <Form form={form} onFinish={validateAccount} style={{ margin: '4em 0 0 auto' }} validateMessages={validateMessages}>
                 <Form.Item name="code" rules={[{ required: true }, { min:6, message:'Mínimo 6 dígitos' }, { max:6, message:'Máximo 6 dígitos' }]} style={{ margin:'2em 0' }}>
@@ -120,8 +124,10 @@ export default function Repassword() {
       case 2:
         return (
           <>
-            <SmallText $textalign='left'>Crea tu nueva <span style={{ color:"#0366d6" }}>contraseña</span></SmallText>
-            <BigText $textalign='left'>Nueva contraseña</BigText>
+            <p className={styles.smallText} style={{ textAlign: 'left' }}>
+             Crea tu nueva <span style={{ color:"#0366d6" }}>contraseña</span>
+            </p>
+            <p className={styles.bigText}>Nueva contraseña</p>
 
             <Form form={form} onFinish={createNewPassword} style={{ margin: '4em 0 0 auto' }} validateMessages={validateMessages}>
               <Form.Item 
@@ -178,9 +184,12 @@ export default function Repassword() {
       { stepper() }
 
       <Divider> o </Divider>
-      <SmallText fontSize='1em'>
-        ¿Ya tienes una cuenta? <Link href="/auth/login"><span style={{ color:"#0366d6", cursor: 'pointer', textDecoration:'underline' }}>Inicia Sesión</span></Link>
-      </SmallText>
+      <p className={styles.smallText} style={{ fontSize: '1em' }}>
+        ¿Ya tienes una cuenta?{' '}
+        <Link href="/auth/login">
+          <span style={{ color:"#0366d6", cursor: 'pointer', textDecoration:'underline' }}>Inicia Sesión</span>
+        </Link>
+      </p>
     </>
   )
 }

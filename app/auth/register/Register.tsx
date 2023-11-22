@@ -2,12 +2,12 @@
 
 import { Button, Divider, Form, Input, notification } from "antd";
 import React, { useState } from "react";
-import { BigText, SmallText } from "../styles";
 import Link from "next/link";
 import { validateMessages } from "@/utils/ValidationMessages";
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { RegisterUser } from "@/api/Auth/actions";
 import { useRouter } from "next/navigation";
+import styles from '../auth.module.css'
 
 export default function Register() {
 
@@ -42,8 +42,10 @@ export default function Register() {
 
   return (
     <>
-      <SmallText $textalign='left'>Bienvenido a <span style={{ color:"#0366d6" }}>Tennis League by Whynot?</span></SmallText>
-      <BigText $textalign='left'>Registrarse</BigText>
+      <p className={styles.smallText} style={{ textAlign: 'left' }}>
+        Bienvenido a <span style={{ color: '#0366d6' }}>Tennis League by Whynot?</span>
+      </p>
+      <p className={`${styles.bigText} ${styles.bigTextLeft}`}>Iniciar Sesión</p>
       <Form
         form={form}
         onFinish={onFinish}
@@ -122,7 +124,7 @@ export default function Register() {
         </Form.Item>
       </Form>
       <Divider> o </Divider>
-      <SmallText fontSize="1em">
+      <p className={styles.smallText} style={{ fontSize: '1em' }}>
         ¿Ya tienes una cuenta?{" "}
         <Link href="/auth/login">
           <span
@@ -135,7 +137,7 @@ export default function Register() {
             Inicia Sesión
           </span>
         </Link>
-      </SmallText>
+      </p>
     </>
   );
 }
