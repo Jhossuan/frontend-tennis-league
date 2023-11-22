@@ -35,6 +35,7 @@ export default function Register() {
     form.resetFields()
     setLoading(false)
     router.push('/auth/login')
+    router.refresh()
     return notification.success({
       message: res.response.msg
     })

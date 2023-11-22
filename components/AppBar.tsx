@@ -55,6 +55,7 @@ function ResponsiveAppBar({
     const logout = () => {
         closeSession()
         router.push('/')
+        router.refresh()
     }
 
   return (

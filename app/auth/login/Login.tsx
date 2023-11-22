@@ -27,6 +27,7 @@ export default function Login() {
     form.resetFields();
     setLoading(false);
     router.push('/admin');
+    router.refresh()
     return notification.success({
       message: res.response.msg,
     });
