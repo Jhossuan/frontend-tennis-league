@@ -111,7 +111,7 @@ function ResponsiveAppBar({
               }}
             >
               {[pages, pagesAuth][validateUser ? 1 : 0].map((page) => (
-                <>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Link
                         href={`${switchRoutes(page)}`}
                         style={{
@@ -120,11 +120,10 @@ function ResponsiveAppBar({
                             fontWeight: "600",
                         }}
                         >
-                        <MenuItem key={page} onClick={handleCloseNavMenu}>
+                        
                             <Typography textAlign="center">{page}</Typography>
-                        </MenuItem>
                     </Link>
-                </>
+                  </MenuItem>
               ))}
             </Menu>
           </Box>
@@ -153,6 +152,7 @@ function ResponsiveAppBar({
             {[pages, pagesAuth][validateUser ? 1 : 0].map((page) => (
               <Link
                 href={`${switchRoutes(page)}`}
+                key={page}
                 style={{
                   textDecoration: "none",
                   color: "#565656",
@@ -189,13 +189,13 @@ function ResponsiveAppBar({
                   </p>
                 </Link>
                 <Link href="/auth/register" style={{ textDecoration: "none" }}>
-                  <ButtonAnt type="primary">Registrarse</ButtonAnt>
+                  <ButtonAnt size="large" type="primary">Registrarse</ButtonAnt>
                 </Link>
               </>
             ) : (
               <>
                 <Link href="/auth/register" style={{ textDecoration: "none" }}>
-                  <ButtonAnt type="primary" danger onClick={logout}>Cerrar Sesión</ButtonAnt>
+                  <ButtonAnt size="large" type="primary" danger onClick={logout}>Cerrar Sesión</ButtonAnt>
                 </Link>
               </>
             )}

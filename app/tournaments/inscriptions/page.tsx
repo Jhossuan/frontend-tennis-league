@@ -1,7 +1,13 @@
 import React from 'react'
+import UserInscriptions from './UserInscriptions'
+import { GetUserData } from '@/api/AuthToken'
 
-export default function page() {
+export default async function page() {
+  const validateUser = await GetUserData()
+
   return (
-    <div>Mis inscripciones</div>
+    <>
+      <UserInscriptions user={validateUser} />
+    </>
   )
 }

@@ -155,7 +155,7 @@ const Tournaments = () => {
                 status: openModal.metadata?.status,
             })
         }
-    }, [openModal])
+    }, [openModal])//eslint-disable-line
 
     const onFinish = async(e: any) => {
         const { title, description, eventDate, location, price, minParticipants, maxParticipants, reward, imageUrl, status } = e

@@ -2,34 +2,38 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from "@mui/material";
 import { Col, Row, notification } from 'antd';
-import styles from '../auth/auth.module.css'
-import { GetTournaments } from '@/api/Tournaments/action';
+import styles from '../../auth/auth.module.css'
 import TournamentI from '@/types/tournament';
 import TournamentsCard from '@/components/Cards';
 import { DecodedData } from '@/types/auth';
+import { GetUserSubscriptions } from '@/api/Competitors/actions';
 
-const Tournaments = ({ user }:{user: DecodedData}) => {
+const UserInscriptions = ({ user }:{user: DecodedData}) => {
 
   const [ tournaments, setTournaments ] = useState<TournamentI[] | []>([])
+  const [ reload, setReload ] = useState<boolean>(false)
   const [ loading, setLoading ] = useState<boolean>(false)
 
 
   const getTournaments = async() => {
     setLoading(true)
-    const res = await GetTournaments()
+    const res = await GetUserSubscriptions(user.uid as string)
     if(res.status !== 200){
     setLoading(false)
         return notification.info({
             message: res.response.msg ?? res.response
         })
     }
+    let array: any[] = []
+    res.response.map((item: any) => array.push(item.Tournament[0]))
     setLoading(false)
-    setTournaments(res.response)
+    setTournaments(array)
+    setReload(false)
 }
 
   useEffect(() => {
     getTournaments()
-  }, [])
+  }, [reload])//eslint-disable-line
 
   return (
     <div style={{
@@ -43,9 +47,9 @@ const Tournaments = ({ user }:{user: DecodedData}) => {
     }}>
 
     <Container style={{ padding:'40px' }}>
-        <p className={styles.bigText} style={{ color:'#fff' }}>Torneos en esta fecha</p>
+        <p className={styles.bigText} style={{ color:'#fff' }}>Mis inscripciones</p>
         <p className={styles.smallText} style={{ margin: 0, color:'#fff' }}>
-          Recuerda que para poder inscribirte en nuestros torneos debes estar registrado en nuestra plataforma.
+          Lista de tus inscripciones, aqui puedes ver el estados de los torneos a los que perteneces.
         </p>
         <Row gutter={[10,10]} style={{ margin:'30px 0', padding:'20px' }}>
           {
@@ -53,7 +57,7 @@ const Tournaments = ({ user }:{user: DecodedData}) => {
             ? tournaments.map(tournament => {
               return (
                 <Col key={tournament.title} xs={24} sm={12} md={8} lg={8}>
-                    <TournamentsCard data={tournament} user={user}/>
+                    <TournamentsCard data={tournament} user={user} setReload={setReload}/>
                   </Col>
                 )
               })
@@ -65,4 +69,4 @@ const Tournaments = ({ user }:{user: DecodedData}) => {
   )
 }
 
-export default Tournaments
+export default UserInscriptions

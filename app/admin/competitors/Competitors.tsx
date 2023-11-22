@@ -28,7 +28,6 @@ const Competitors = () => {
     const getTournaments = async() => {
         setLoading(true)
         const res = await GetCompetitors()
-        console.log('res', res.response)
         if(res.status !== 200){
         setLoading(false)
             return notification.info({

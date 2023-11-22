@@ -13,6 +13,6 @@ export default interface TournamentI {
     reward: string
     created_at?: Date
     imageUrl?: string
-    status: TournamentStatusT[]
+    status: TournamentStatusT
     uid?: string
 }

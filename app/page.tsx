@@ -9,12 +9,14 @@ export default async function page() {
   const validateUser = await GetUserData();
 
   return (
-    <body
-      className={inter.className}
-      style={{ margin: 0, padding: 0, boxSizing: "border-box" }}
-    >
-      <ResponsiveAppBar  validateUser={ validateUser } />
-      <Home />
-    </body>
+    <html lang="es">
+      <body
+        className={inter.className}
+        style={{ margin: 0, padding: 0, boxSizing: "border-box" }}
+      >
+        <ResponsiveAppBar  validateUser={ validateUser } />
+        <Home user={validateUser}/>
+      </body>
+    </html>
   );
 }

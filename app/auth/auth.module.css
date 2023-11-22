@@ -1,11 +1,9 @@
-/* Row.module.css */
 .row {
     width: 100%;
     min-height: calc(100vh - 4em);
     background: #0366d6;
   }
   
-  /* InputCard.module.css */
   .inputCard {
     background: #fff;
     border-radius: 40px;
@@ -13,6 +11,14 @@
     width: 60%;
     box-shadow: 0px 10px 50px 1px #0003;
     padding: 50px;
+  }
+
+  .cardContainer {
+    background: #fff;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0px 10px 50px 1px #0003;
+    padding: 20px;
   }
   
   @media (min-width: 1600px) {
@@ -29,25 +35,21 @@
     }
   }
   
-  /* BigText.module.css */
   .bigText {
     font-size: 3em;
-    font-style: normal;
     font-weight: 700;
   }
   
   @media (max-width: 992px) {
     .bigText {
       font-size: 2.2em;
+      text-align: center;
     }
   }
   
-  /* MediumText.module.css */
   .mediumText {
     font-size: 1.6em;
-    font-style: normal;
     font-weight: 600;
-    line-height: 40px;
   }
   
   @media (max-width: 992px) {
@@ -56,12 +58,9 @@
     }
   }
   
-  /* SmallText.module.css */
   .smallText {
-    font-size: 1.2em;
-    font-style: normal;
+    font-size: 1.5em;
     font-weight: 500;
-    line-height: 40px;
   }
   
   @media (max-width: 992px) {

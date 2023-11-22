@@ -213,7 +213,7 @@ const Users = () => {
             userType: metadata?.userType
         })
     }
-  }, [openModal])
+  }, [openModal])//eslint-disable-line
 
   return (
     <>
