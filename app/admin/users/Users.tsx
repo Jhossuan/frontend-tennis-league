@@ -204,7 +204,7 @@ const Users = () => {
   useEffect(() => {
     if(openModal.metadata){
         const { name, email, phone, metadata } = openModal.metadata
-        const newPhone = Number(phone?.split('+57')[1])
+        const newPhone = Number(phone?.split('+')[1])
         console.log(newPhone)
         form.setFieldsValue({
             name,
