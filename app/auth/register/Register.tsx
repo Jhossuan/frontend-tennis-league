@@ -4,7 +4,7 @@ import { Button, Divider, Form, Input, Tooltip, notification } from "antd";
 import React, { useState } from "react";
 import Link from "next/link";
 import { validateMessages } from "@/utils/ValidationMessages";
-import { UserOutlined, LockOutlined, MailOutlined, PhoneOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { RegisterUser } from "@/api/Auth/actions";
 import { useRouter } from "next/navigation";
 import styles from '../auth.module.css'
@@ -71,7 +71,7 @@ export default function Register() {
 
         <Tooltip title="Por favor, ingresa tu número de teléfono con el código de país.">
           <Form.Item name="phone" rules={[{ required: true }, {min: 5, message:"Mínimo 5 dígitos"}, {max: 14, message:"Máximo 14 dígitos"}]} style={{ margin:'2em 0' }}>
-            <Input type='number' prefix={<PhoneOutlined />} placeholder='17875XXXXXX' />
+            <Input type='number' prefix={"+"} placeholder='1 787 5XX XXXX' />
           </Form.Item>
         </Tooltip>
 
