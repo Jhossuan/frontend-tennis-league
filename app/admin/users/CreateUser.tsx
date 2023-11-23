@@ -38,7 +38,7 @@ const CreateUser = ({
           { required: true },
         ]}
       >
-        <Input type="number" prefix={"+57"} placeholder="Celular / Télefono" />
+        <Input type="number" prefix={"+"} placeholder="1 787 5XX XXXX" />
       </Form.Item>
 
       <Form.Item
