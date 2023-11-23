@@ -39,7 +39,7 @@ const Users = () => {
         name: e.name,
         email: e.email,
         password: e.password,
-        phone: `+57${e.phone}`,
+        phone: `+${e.phone}`,
         userType: e.userType
       }
       const res = await RegisterUser(request)
@@ -68,7 +68,7 @@ const Users = () => {
         newData: {
             name,
             email,
-            phone: `+57${phone}`,
+            phone: `+${e.phone}`,
             userType
         }
     }
